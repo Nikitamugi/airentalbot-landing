@@ -103,17 +103,39 @@
     </section>
 
     <!-- Dashboard Section -->
-    <section id="dashboard" class="main style2">
-      <div class="container">
-        <header class="major">
-          <h2>Interactive Dashboard</h2>
-        </header>
-        <p>Access the full dashboard to manage reminders, view tenant replies, and export logs.</p>
-        <a href="https://airentalbot.netlify.app/dashboard" target="_blank" class="dash-link-btn">
-          Open Dashboard
-        </a>
-      </div>
-    </section>
+<section id="dashboard" class="main style2" 
+  style="background: linear-gradient(to bottom left, #FFD700, #8B0000); padding: 60px 20px; text-align: center;">
+  <div class="container">
+    <header class="major">
+      <h2 style="color: white;">Interactive Dashboard</h2>
+    </header>
+    <p style="color: white;">Access the full dashboard to manage reminders, view tenant replies, and export logs.</p>
+
+    <!-- Single Gradient Button -->
+    <a href="https://airentalbot.netlify.app/dashboard" target="_blank" class="dash-link-btn">
+      Open Dashboard
+    </a>
+  </div>
+</section>
+
+<style>
+  /* Gradient link button */
+  .dash-link-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #4CAF50, #2E8B57);
+    color: white;
+    padding: 18px 40px;
+    border-radius: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .dash-link-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  }
+</style>
 
     <!-- Footer -->
     <footer id="footer">
@@ -128,3 +150,4 @@
     <script src="assets/js/main.js"></script>
   </body>
 </html>
+
