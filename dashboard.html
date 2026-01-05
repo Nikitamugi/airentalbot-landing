@@ -13,6 +13,7 @@
         position: relative;
         min-height: 100vh;
         overflow: hidden;
+        color: white; /* all text white */
       }
       body::before {
         content: "";
@@ -29,28 +30,19 @@
         padding: 60px 20px;
       }
 
-      /* White text with black outline */
-      .outlined-text {
-        color: white;
-        text-shadow: 
-          -1px -1px 0 #000,
-           1px -1px 0 #000,
-          -1px  1px 0 #000,
-           1px  1px 0 #000;
-      }
-
-      /* Transparent buttons blending with background */
+      /* Buttons blending with background */
       .dash-btn {
         display: inline-block;
         background: transparent;
         color: white;
         border: 2px solid white;
-        padding: 14px 30px;
+        padding: 12px 40px; /* balanced padding for text fit */
         border-radius: 30px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bold;
         text-decoration: none;
         margin: 10px;
+        line-height: 1.4; /* ensures text fits nicely */
         transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
       }
       .dash-btn:hover {
@@ -64,32 +56,32 @@
         width: 90%;
         margin: 30px auto;
         border-collapse: collapse;
-        background: rgba(255,255,255,0.9);
-        color: #333;
+        background: rgba(0,0,0,0.6); /* dark semi-transparent table */
+        color: white; /* table text white */
         border-radius: 10px;
         overflow: hidden;
       }
       th, td {
         padding: 12px;
-        border: 1px solid #ddd;
+        border: 1px solid rgba(255,255,255,0.3);
         text-align: center;
       }
       th {
-        background: rgba(0,0,0,0.7);
+        background: rgba(255,255,255,0.1);
         color: white;
       }
       tr:nth-child(even) {
-        background-color: #f9f9f9;
+        background-color: rgba(255,255,255,0.05);
       }
       tr:hover {
-        background-color: #f1f1f1;
+        background-color: rgba(255,255,255,0.15);
       }
     </style>
   </head>
   <body>
     <div class="content">
-      <h1 class="outlined-text">Interactive Dashboard</h1>
-      <p class="outlined-text">Manage rent reminders and tenant replies here.</p>
+      <h1>Interactive Dashboard</h1>
+      <p>Manage rent reminders and tenant replies here.</p>
 
       <!-- Buttons -->
       <div>
