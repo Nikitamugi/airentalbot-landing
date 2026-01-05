@@ -77,6 +77,44 @@
         </ul>
       </div>
     </section>
+<button id="viewRepliesBtn">View Tenant Replies</button>
+
+<table id="repliesTable" border="1" style="margin-top:20px; width:100%; border-collapse:collapse;">
+  <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>Sender</th>
+      <th>Subject</th>
+      <th>Body</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+document.getElementById("viewRepliesBtn").addEventListener("click", async () => {
+  const res = await fetch("/.netlify/functions/get_replies");
+  const data = await res.json();
+  const tbody = document.querySelector("#repliesTable tbody");
+
+  tbody.innerHTML = ""; // clear old rows
+  if (data.replies.length === 0) {
+    tbody.innerHTML = "<tr><td colspan='5'>No replies logged yet.</td></tr>";
+  } else {
+    data.replies.forEach(r => {
+      const row = `<tr>
+        <td>${r.timestamp}</td>
+        <td>${r.sender}</td>
+        <td>${r.subject}</td>
+        <td>${r.body}</td>
+        <td>${r.status}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  }
+});
+</script>
 
     <!-- Footer -->
     <footer id="footer">
@@ -91,3 +129,4 @@
     <script src="assets/js/main.js"></script>
   </body>
 </html>
+
