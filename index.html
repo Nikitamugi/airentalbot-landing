@@ -115,135 +115,38 @@
       </div>
     </section>
 
-  <!-- Dashboard Section -->
 <!-- Dashboard Section -->
 <section id="dashboard" class="main style2" 
-  style="background: linear-gradient(to top right, #d3d3d3, #ffffff); padding: 40px 20px;">
-  <div class="container" style="text-align: center;">
+  style="background: linear-gradient(to top right, #d3d3d3, #ffffff); padding: 60px 20px; text-align: center;">
+  <div class="container">
     <header class="major">
       <h2>Interactive Dashboard</h2>
     </header>
-    <p>Trigger reminders, view tenant replies, and export logs directly from here.</p>
+    <p>Access the full dashboard to manage reminders, view tenant replies, and export logs.</p>
 
-    <!-- Buttons styled with lifted text -->
-    <div style="margin: 20px 0;">
-      <button id="sendReminderBtn" class="dash-btn">Send Rent Reminders</button>
-      <button id="viewRepliesBtn" class="dash-btn">View Tenant Replies</button>
-      <button id="downloadRepliesBtn" class="dash-btn">Download Replies as CSV</button>
-    </div>
-
-    <!-- Replies Table -->
-    <table id="repliesTable" style="margin: 0 auto; width: 90%; border-collapse: collapse; background: white; color: #333; border-radius: 10px; overflow: hidden;">
-      <thead>
-        <tr style="background: linear-gradient(135deg, #4CAF50, #2E8B57); color: white; text-align: center;">
-          <th>Timestamp</th>
-          <th>Sender</th>
-          <th>Subject</th>
-          <th>Body</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody style="text-align: center;">
-        <!-- Rows will be injected here -->
-      </tbody>
-    </table>
+    <!-- Single Gradient Button -->
+    <a href="https://airentalbot.netlify.app/dashboard" target="_blank" class="dash-link-btn">
+      Open Dashboard
+    </a>
   </div>
 </section>
 
 <style>
-  /* Gradient button style with lifted text */
-  .dash-btn {
+  /* Gradient link button */
+  .dash-link-btn {
+    display: inline-block;
     background: linear-gradient(135deg, #4CAF50, #2E8B57);
     color: white;
-    padding: 14px 20px 10px 20px; /* more top padding, less bottom padding */
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 5px;
+    padding: 18px 40px;
+    border-radius: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
-    line-height: 1.2; /* tighter line height to lift text */
   }
-  .dash-btn:hover {
-    transform: translateY(-2px); /* subtle lift on hover */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-
-  /* Table rows */
-  #repliesTable td, #repliesTable th {
-    padding: 12px;
-    border: 1px solid #ddd;
-  }
-  #repliesTable tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  #repliesTable tr:hover {
-    background-color: #f1f1f1;
-  }
-</style>
-<!-- Dashboard Section -->
-<section id="dashboard" class="main style2" 
-  style="background: linear-gradient(to top right, #d3d3d3, #ffffff); padding: 40px 20px;">
-  <div class="container" style="text-align: center;">
-    <header class="major">
-      <h2>Interactive Dashboard</h2>
-    </header>
-    <p>Trigger reminders, view tenant replies, and export logs directly from here.</p>
-
-    <!-- Buttons styled with lifted text -->
-    <div style="margin: 20px 0;">
-      <button id="sendReminderBtn" class="dash-btn">Send Rent Reminders</button>
-      <button id="viewRepliesBtn" class="dash-btn">View Tenant Replies</button>
-      <button id="downloadRepliesBtn" class="dash-btn">Download Replies as CSV</button>
-    </div>
-
-    <!-- Replies Table -->
-    <table id="repliesTable" style="margin: 0 auto; width: 90%; border-collapse: collapse; background: white; color: #333; border-radius: 10px; overflow: hidden;">
-      <thead>
-        <tr style="background: linear-gradient(135deg, #4CAF50, #2E8B57); color: white; text-align: center;">
-          <th>Timestamp</th>
-          <th>Sender</th>
-          <th>Subject</th>
-          <th>Body</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody style="text-align: center;">
-        <!-- Rows will be injected here -->
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<style>
-  /* Gradient button style with lifted text */
-  .dash-btn {
-    background: linear-gradient(135deg, #4CAF50, #2E8B57);
-    color: white;
-    padding: 14px 20px 10px 20px; /* more top padding, less bottom padding */
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 5px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    line-height: 1.2; /* tighter line height to lift text */
-  }
-  .dash-btn:hover {
-    transform: translateY(-2px); /* subtle lift on hover */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-
-  /* Table rows */
-  #repliesTable td, #repliesTable th {
-    padding: 12px;
-    border: 1px solid #ddd;
-  }
-  #repliesTable tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  #repliesTable tr:hover {
-    background-color: #f1f1f1;
+  .dash-link-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
   }
 </style>
 
@@ -346,5 +249,6 @@
     </script>
   </body>
 </html>
+
 
 
