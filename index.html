@@ -6,40 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-      /* Dashboard styling merged in */
-      #viewRepliesBtn, #sendReminderBtn, #downloadRepliesBtn {
-        background-color: #4CAF50;
+      /* Dashboard button styling */
+      .dash-link-btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #4CAF50, #2E8B57);
         color: white;
-        padding: 10px 15px;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
-        border-radius: 4px;
-        margin: 5px;
+        padding: 18px 40px;
+        border-radius: 35px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
       }
-      #viewRepliesBtn:hover, #sendReminderBtn:hover, #downloadRepliesBtn:hover {
-        background-color: #45a049;
+      .dash-link-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.25);
       }
-      #repliesTable {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        font-size: 14px;
-      }
-      #repliesTable th, #repliesTable td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-      }
-      #repliesTable th {
-        background-color: #4CAF50;
-        color: white;
-      }
-      #repliesTable tr:nth-child(even) {
-        background-color: #f9f9f9;
-      }
-      #repliesTable tr:hover {
-        background-color: #f1f1f1;
+      /* Dashboard section background */
+      #dashboard {
+        background: linear-gradient(to top right, #d3d3d3, #ffffff);
+        padding: 60px 20px;
+        text-align: center;
       }
     </style>
   </head>
@@ -115,70 +102,18 @@
       </div>
     </section>
 
-<!-- Dashboard Section -->
-<section id="dashboard" class="main style2" 
-  style="background: linear-gradient(to top right, #d3d3d3, #ffffff); padding: 60px 20px; text-align: center;">
-  <div class="container">
-    <header class="major">
-      <h2>Interactive Dashboard</h2>
-    </header>
-    <p>Access the full dashboard to manage reminders, view tenant replies, and export logs.</p>
-
-    <!-- Single Gradient Button -->
-    <a href="https://airentalbot.netlify.app/dashboard" target="_blank" class="dash-link-btn">
-      Open Dashboard
-    </a>
-  </div>
-</section>
-
-<style>
-  /* Gradient link button */
-  .dash-link-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, #4CAF50, #2E8B57);
-    color: white;
-    padding: 18px 40px;
-    border-radius: 35px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .dash-link-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-  }
-</style>
-
-  /* Gradient button style */
-  .dash-btn {
-    background: linear-gradient(135deg, #4CAF50, #2E8B57);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 5px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .dash-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-
-  /* Table rows */
-  #repliesTable td, #repliesTable th {
-    padding: 12px;
-    border: 1px solid #ddd;
-  }
-  #repliesTable tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  #repliesTable tr:hover {
-    background-color: #f1f1f1;
-  }
-</style>
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="main style2">
+      <div class="container">
+        <header class="major">
+          <h2>Interactive Dashboard</h2>
+        </header>
+        <p>Access the full dashboard to manage reminders, view tenant replies, and export logs.</p>
+        <a href="https://airentalbot.netlify.app/dashboard" target="_blank" class="dash-link-btn">
+          Open Dashboard
+        </a>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer id="footer">
@@ -191,64 +126,5 @@
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-
-    <script>
-      // Trigger reminders
-      document.getElementById("sendReminderBtn").addEventListener("click", async () => {
-        const res = await fetch("/.netlify/functions/send_reminder", { method: "POST" });
-        const data = await res.json();
-        alert(data.message);
-      });
-
-      // Fetch and display replies
-      document.getElementById("viewRepliesBtn").addEventListener("click", async () => {
-        const res = await fetch("/.netlify/functions/get_replies");
-        const data = await res.json();
-        const tbody = document.querySelector("#repliesTable tbody");
-
-        tbody.innerHTML = "";
-        if (data.replies.length === 0) {
-          tbody.innerHTML = "<tr><td colspan='5'>No replies logged yet.</td></tr>";
-        } else {
-          data.replies.forEach(r => {
-            const row = `<tr>
-              <td>${r.timestamp}</td>
-              <td>${r.sender}</td>
-              <td>${r.subject}</td>
-              <td>${r.body}</td>
-              <td>${r.status}</td>
-            </tr>`;
-            tbody.innerHTML += row;
-          });
-        }
-      });
-
-      // Download replies as CSV
-      document.getElementById("downloadRepliesBtn").addEventListener("click", async () => {
-        const res = await fetch("/.netlify/functions/get_replies");
-        const data = await res.json();
-
-        if (data.replies.length === 0) {
-          alert("No replies to download.");
-          return;
-        }
-
-        const headers = Object.keys(data.replies[0]).join(",");
-        const rows = data.replies.map(r => Object.values(r).map(v => `"${v}"`).join(","));
-        const csvContent = [headers, ...rows].join("\n");
-
-        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.setAttribute("href", url);
-        link.setAttribute("download", "tenant_replies.csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
-    </script>
   </body>
 </html>
-
-
-
