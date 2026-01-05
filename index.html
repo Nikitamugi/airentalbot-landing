@@ -6,35 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-      /* Text outline and shadow */
-      .white-text-outline {
-        color: white;
-        text-shadow: 
-          -1px -1px 0 #000,
-           1px -1px 0 #000,
-          -1px  1px 0 #000,
-           1px  1px 0 #000;
-      }
-      .header-shadow {
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-      }
-
-      /* Hero blur overlay */
+      /* Hero section with darker overlay */
       #header {
         position: relative;
         overflow: hidden;
+        background: url('assets/css/images/67371cdeed7bd3501f7b312f_apartment4.jpg') center bottom/cover no-repeat;
       }
       #header::before {
         content: "";
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('assets/css/images/67371cdeed7bd3501f7b312f_apartment4.jpg') center/cover no-repeat;
-        filter: blur(4px);
+        background: rgba(0,0,0,0.5); /* dark overlay */
         z-index: 0;
       }
       #header .inner {
         position: relative;
         z-index: 1;
+        color: white; /* readable text */
       }
 
       /* Dashboard button styling */
@@ -59,8 +47,6 @@
         background: linear-gradient(to bottom left, #8B0000, #FFD700);
         padding: 60px 20px;
         text-align: center;
-      }
-      #dashboard h2, #dashboard p {
         color: white;
       }
     </style>
@@ -70,11 +56,11 @@
     <!-- Hero Section -->
     <section id="header">
       <div class="inner">
-        <h1 class="white-text-outline header-shadow">AI Rental Bot</h1>
-        <p class="white-text-outline">Save time, reduce stress in rental management.<br />
+        <h1>AI Rental Bot</h1>
+        <p>Save time, reduce stress in rental management.<br />
         Automate rent reminders, tenant communication, and maintenance scheduling.</p>
         <ul class="actions">
-          <li><a href="mailto:nikitamugi@gmail.com" class="button big special white-text-outline">Book a Free Demo</a></li>
+          <li><a href="mailto:nikitamugi@gmail.com" class="button big special">Book a Free Demo</a></li>
         </ul>
       </div>
     </section>
@@ -83,7 +69,7 @@
     <section id="problem" class="main style1">
       <div class="container">
         <header class="major">
-          <h2 class="header-shadow">The Problem</h2>
+          <h2>The Problem</h2>
         </header>
         <p>Landlords face missed rent payments, tenant communication overload, and maintenance delays. Managing multiple properties can be stressful and time‑consuming.</p>
       </div>
@@ -93,7 +79,7 @@
     <section id="solution" class="main style2">
       <div class="container">
         <header class="major">
-          <h2 class="header-shadow">The Solution</h2>
+          <h2>The Solution</h2>
         </header>
         <p>Our AI Rental Bot automates rent reminders, handles tenant requests instantly, and schedules maintenance tasks. It’s simple, reliable, and designed for landlords worldwide.</p>
       </div>
@@ -103,7 +89,7 @@
     <section id="benefits" class="main style1">
       <div class="container">
         <header class="major">
-          <h2 class="header-shadow">Benefits</h2>
+          <h2>Benefits</h2>
         </header>
         <ul>
           <li>Save hours monthly</li>
@@ -118,7 +104,7 @@
     <section id="how" class="main style2">
       <div class="container">
         <header class="major">
-          <h2 class="header-shadow">How It Works</h2>
+          <h2>How It Works</h2>
         </header>
         <p>Simple WhatsApp/Telegram interface. AI trained on rental workflows. Easy setup, no technical skills required.</p>
       </div>
@@ -128,7 +114,7 @@
     <section id="demo" class="main style1 special">
       <div class="container">
         <header class="major">
-          <h2 class="header-shadow">Business Model & Next Steps</h2>
+          <h2>Business Model & Next Steps</h2>
         </header>
         <p>Subscription ($5–$20/month per property). Free trial available.</p>
         <ul class="actions">
@@ -141,9 +127,9 @@
     <section id="dashboard" class="main style2">
       <div class="container">
         <header class="major">
-          <h2 class="white-text-outline header-shadow">Interactive Dashboard</h2>
+          <h2>Interactive Dashboard</h2>
         </header>
-        <p class="white-text-outline">Access the full dashboard to manage reminders, view tenant replies, and export logs.</p>
+        <p>Access the full dashboard to manage reminders, view tenant replies, and export logs.</p>
         <a href="https://airentalbot.netlify.app/dashboard" target="_blank" class="dash-link-btn">
           Open Dashboard
         </a>
