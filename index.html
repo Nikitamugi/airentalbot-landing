@@ -115,31 +115,69 @@
       </div>
     </section>
 
-    <!-- Dashboard Section -->
-    <section id="dashboard" class="main style2">
-      <div class="container">
-        <header class="major">
-          <h2>Interactive Dashboard</h2>
-        </header>
-        <p>Trigger reminders, view tenant replies, and export logs directly from here.</p>
-        <button id="sendReminderBtn">Send Rent Reminders</button>
-        <button id="viewRepliesBtn">View Tenant Replies</button>
-        <button id="downloadRepliesBtn">Download Replies as CSV</button>
+  <!-- Dashboard Section -->
+<section id="dashboard" class="main style2" style="background: linear-gradient(135deg, #4CAF50, #2E8B57); color: white; padding: 40px 20px;">
+  <div class="container" style="text-align: center;">
+    <header class="major">
+      <h2 style="color: white;">Interactive Dashboard</h2>
+    </header>
+    <p>Trigger reminders, view tenant replies, and export logs directly from here.</p>
 
-        <table id="repliesTable">
-          <thead>
-            <tr>
-              <th>Timestamp</th>
-              <th>Sender</th>
-              <th>Subject</th>
-              <th>Body</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
+    <!-- Buttons styled as gradient shapes -->
+    <div style="margin: 20px 0;">
+      <button id="sendReminderBtn" class="dash-btn">Send Rent Reminders</button>
+      <button id="viewRepliesBtn" class="dash-btn">View Tenant Replies</button>
+      <button id="downloadRepliesBtn" class="dash-btn">Download Replies as CSV</button>
+    </div>
+
+    <!-- Replies Table -->
+    <table id="repliesTable" style="margin: 0 auto; width: 90%; border-collapse: collapse; background: white; color: #333; border-radius: 10px; overflow: hidden;">
+      <thead>
+        <tr style="background: linear-gradient(135deg, #4CAF50, #2E8B57); color: white; text-align: center;">
+          <th>Timestamp</th>
+          <th>Sender</th>
+          <th>Subject</th>
+          <th>Body</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center;">
+        <!-- Rows will be injected here -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  /* Gradient button style */
+  .dash-btn {
+    background: linear-gradient(135deg, #4CAF50, #2E8B57);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .dash-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  /* Table rows */
+  #repliesTable td, #repliesTable th {
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  #repliesTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  #repliesTable tr:hover {
+    background-color: #f1f1f1;
+  }
+</style>
 
     <!-- Footer -->
     <footer id="footer">
@@ -210,3 +248,4 @@
     </script>
   </body>
 </html>
+
