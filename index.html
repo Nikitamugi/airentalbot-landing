@@ -1,110 +1,212 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>AI Rental Bot | Save Time, Reduce Stress</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-    }
-
-    #viewRepliesBtn, #sendReminderBtn {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      border-radius: 4px;
-      margin-right: 10px;
-    }
-
-    #viewRepliesBtn:hover, #sendReminderBtn:hover {
-      background-color: #45a049;
-    }
-
-    #repliesTable {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    #repliesTable th, #repliesTable td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-
-    #repliesTable th {
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    #repliesTable tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    #repliesTable tr:hover {
-      background-color: #f1f1f1;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>AI Rental Bot Dashboard</h1>
-  <p>Manage tenant reminders and view replies directly from this page.</p>
-
-  <!-- Buttons -->
-  <button id="sendReminderBtn">Send Rent Reminders</button>
-  <button id="viewRepliesBtn">View Tenant Replies</button>
-
-  <!-- Replies Table -->
-  <table id="repliesTable">
-    <thead>
-      <tr>
-        <th>Timestamp</th>
-        <th>Sender</th>
-        <th>Subject</th>
-        <th>Body</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <script>
-    // Trigger reminders
-    document.getElementById("sendReminderBtn").addEventListener("click", async () => {
-      const res = await fetch("/.netlify/functions/send_reminder", { method: "POST" });
-      const data = await res.json();
-      alert(data.message); // Show confirmation popup
-    });
-
-    // Fetch and display replies
-    document.getElementById("viewRepliesBtn").addEventListener("click", async () => {
-      const res = await fetch("/.netlify/functions/get_replies");
-      const data = await res.json();
-      const tbody = document.querySelector("#repliesTable tbody");
-
-      tbody.innerHTML = ""; // clear old rows
-      if (data.replies.length === 0) {
-        tbody.innerHTML = "<tr><td colspan='5'>No replies logged yet.</td></tr>";
-      } else {
-        data.replies.forEach(r => {
-          const row = `<tr>
-            <td>${r.timestamp}</td>
-            <td>${r.sender}</td>
-            <td>${r.subject}</td>
-            <td>${r.body}</td>
-            <td>${r.status}</td>
-          </tr>`;
-          tbody.innerHTML += row;
-        });
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>AI Rental Bot | Save Time, Reduce Stress</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      /* Dashboard styling merged in */
+      #viewRepliesBtn, #sendReminderBtn, #downloadRepliesBtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 4px;
+        margin: 5px;
       }
-    });
-  </script>
+      #viewRepliesBtn:hover, #sendReminderBtn:hover, #downloadRepliesBtn:hover {
+        background-color: #45a049;
+      }
+      #repliesTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 14px;
+      }
+      #repliesTable th, #repliesTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      #repliesTable th {
+        background-color: #4CAF50;
+        color: white;
+      }
+      #repliesTable tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      #repliesTable tr:hover {
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
 
-</body>
+    <!-- Hero Section -->
+    <section id="header" style="background-image: url('assets/css/images/hero-bg.jpg'); background-size: cover; background-position: center;">
+      <div class="inner">
+        <h1>AI Rental Bot</h1>
+        <p>Save time, reduce stress in rental management.<br />
+        Automate rent reminders, tenant communication, and maintenance scheduling.</p>
+        <ul class="actions">
+          <li><a href="mailto:nikitamugi@gmail.com" class="button big special">Book a Free Demo</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="main style1">
+      <div class="container">
+        <header class="major">
+          <h2>The Problem</h2>
+        </header>
+        <p>Landlords face missed rent payments, tenant communication overload, and maintenance delays. Managing multiple properties can be stressful and time‑consuming.</p>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="main style2">
+      <div class="container">
+        <header class="major">
+          <h2>The Solution</h2>
+        </header>
+        <p>Our AI Rental Bot automates rent reminders, handles tenant requests instantly, and schedules maintenance tasks. It’s simple, reliable, and designed for landlords worldwide.</p>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="main style1">
+      <div class="container">
+        <header class="major">
+          <h2>Benefits</h2>
+        </header>
+        <ul>
+          <li>Save hours monthly</li>
+          <li>Reduce missed payments</li>
+          <li>Improve tenant satisfaction</li>
+          <li>Affordable subscription ($5–$20/property)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how" class="main style2">
+      <div class="container">
+        <header class="major">
+          <h2>How It Works</h2>
+        </header>
+        <p>Simple WhatsApp/Telegram interface. AI trained on rental workflows. Easy setup, no technical skills required.</p>
+      </div>
+    </section>
+
+    <!-- Pricing & CTA Section -->
+    <section id="demo" class="main style1 special">
+      <div class="container">
+        <header class="major">
+          <h2>Business Model & Next Steps</h2>
+        </header>
+        <p>Subscription ($5–$20/month per property). Free trial available.</p>
+        <ul class="actions">
+          <li><a href="mailto:nikita@example.com" class="button big special">Schedule a Demo Today</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="main style2">
+      <div class="container">
+        <header class="major">
+          <h2>Interactive Dashboard</h2>
+        </header>
+        <p>Trigger reminders, view tenant replies, and export logs directly from here.</p>
+        <button id="sendReminderBtn">Send Rent Reminders</button>
+        <button id="viewRepliesBtn">View Tenant Replies</button>
+        <button id="downloadRepliesBtn">Download Replies as CSV</button>
+
+        <table id="repliesTable">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Sender</th>
+              <th>Subject</th>
+              <th>Body</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="container">
+        <p>&copy; 2026 AI Rental Bot. Built by Nikita.</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      // Trigger reminders
+      document.getElementById("sendReminderBtn").addEventListener("click", async () => {
+        const res = await fetch("/.netlify/functions/send_reminder", { method: "POST" });
+        const data = await res.json();
+        alert(data.message);
+      });
+
+      // Fetch and display replies
+      document.getElementById("viewRepliesBtn").addEventListener("click", async () => {
+        const res = await fetch("/.netlify/functions/get_replies");
+        const data = await res.json();
+        const tbody = document.querySelector("#repliesTable tbody");
+
+        tbody.innerHTML = "";
+        if (data.replies.length === 0) {
+          tbody.innerHTML = "<tr><td colspan='5'>No replies logged yet.</td></tr>";
+        } else {
+          data.replies.forEach(r => {
+            const row = `<tr>
+              <td>${r.timestamp}</td>
+              <td>${r.sender}</td>
+              <td>${r.subject}</td>
+              <td>${r.body}</td>
+              <td>${r.status}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+          });
+        }
+      });
+
+      // Download replies as CSV
+      document.getElementById("downloadRepliesBtn").addEventListener("click", async () => {
+        const res = await fetch("/.netlify/functions/get_replies");
+        const data = await res.json();
+
+        if (data.replies.length === 0) {
+          alert("No replies to download.");
+          return;
+        }
+
+        const headers = Object.keys(data.replies[0]).join(",");
+        const rows = data.replies.map(r => Object.values(r).map(v => `"${v}"`).join(","));
+        const csvContent = [headers, ...rows].join("\n");
+
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", "tenant_replies.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    </script>
+  </body>
 </html>
